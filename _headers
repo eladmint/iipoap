@@ -1,3 +1,2 @@
 /*
-  Content-Security-Policy: frame-src 'self' https://identity.ic0.app/;
-  X-Frame-Options: ALLOW-FROM https://identity.ic0.app/
+  Content-Security-Policy: frame-src 'self' https://identity.ic0.app/; connect-src 'self' https://identity.ic0.app/;
