@@ -10,11 +10,10 @@ window.addEventListener('message', function(event) {
     console.log('Received message:', event.data);
 
     if (event.data.kind === "authorize-ready") {
-        // II is ready, send the authorization request
         iiWindow.postMessage({
             kind: "authorize-client",
-            sessionPublicKey: new Uint8Array(32), // Replace with actual public key if needed
-            maxTimeToLive: BigInt(600000000000) // 10 minutes in nanoseconds
+            sessionPublicKey: new Uint8Array(32),
+            maxTimeToLive: BigInt(600000000000)
         }, "https://identity.ic0.app");
     } else if (event.data.kind === "authorize-client-success") {
         const userPublicKey = event.data.userPublicKey;
@@ -22,15 +21,10 @@ window.addEventListener('message', function(event) {
         document.getElementById('status').textContent = 'Internet Identity created successfully! You will receive your LCT digital asset after the event.';
         iiWindow.close();
         
-        // Send data to Google Sheets
-        fetch('https://script.google.com/macros/s/AKfycbyv_rVxmOWib3yWW18Q-lr_iM723xymuatYYxh-bjo9RHEzHO2y3rf9W1V8U_pqVJPO/exec', {
-            method: 'POST',
-            mode: 'no-cors', // Important!
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ iiNumber: userPublicKey }),
-        })
+        // Send data to Google Sheets using GET request
+        const url = `https://script.google.com/macros/s/AKfycbyv_rVxmOWib3yWW18Q-lr_iM723xymuatYYxh-bjo9RHEzHO2y3rf9W1V8U_pqVJPO/exec?iiNumber=${encodeURIComponent(userPublicKey)}`;
+        
+        fetch(url, { mode: 'no-cors' })
         .then(response => console.log('Success:', response))
         .catch(error => console.error('Error:', error));
     }
