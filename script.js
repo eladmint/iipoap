@@ -22,16 +22,16 @@ window.addEventListener('message', function(event) {
         document.getElementById('status').textContent = 'Internet Identity created successfully! You will receive your LCT digital asset after the event.';
         iiWindow.close();
         
-        // Here you could also send the II number to your backend if you prefer server-side storage
-        // This is just a placeholder and won't work without a proper backend setup
-        /*
+        // Send data to Google Sheets
         fetch('https://script.google.com/macros/s/AKfycbw9Bh3EpiZl9Fxnn92YCRDhRd4ZPZW1rmJ5-TNATAz5qOqYWI8SuX64e0o-wfiazvps/exec', {
             method: 'POST',
+            mode: 'no-cors', // Important!
             headers: {
                 'Content-Type': 'application/json',
             },
             body: JSON.stringify({ iiNumber: userPublicKey }),
-        });
-        */
+        })
+        .then(response => console.log('Success:', response))
+        .catch(error => console.error('Error:', error));
     }
 });
