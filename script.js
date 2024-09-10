@@ -22,7 +22,7 @@ window.addEventListener('message', function(event) {
         iiWindow.close();
         
         // Send data to Google Sheets using GET request
-        const url = `https://script.google.com/macros/s/AKfycbyv_rVxmOWib3yWW18Q-lr_iM723xymuatYYxh-bjo9RHEzHO2y3rf9W1V8U_pqVJPO/exec?iiNumber=${encodeURIComponent(userPublicKey)}`;
+        const url = `https://script.google.com/macros/s/AKfycbyEDhkrCoLoH1GTBo8M_eyeot0RE4HJsmzUj5xsDYhs4jcU8yJA9t4GaSQkylpZzxTp/exec?iiNumber=${encodeURIComponent(userPublicKey)}`;
         
         fetch(url, { mode: 'no-cors' })
         .then(response => console.log('Success:', response))
