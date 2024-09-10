@@ -1,16 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="Content-Security-Policy" content="frame-src 'self' https://identity.ic0.app/">
-  <title>Create your Internet Identity for LCT</title>
-  <!-- rest of your head content -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create your Internet Identity for LCT</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+            background-color: #0a192f;
+            color: white;
+        }
+        h1 {
+            color: #4FF825;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        #status {
+            margin-top: 20px;
+        }
+    </style>
 </head>
 <body>
     <h1>Create your Internet Identity for LCT</h1>
-    <p>Create an Internet Identity below to receive an exclusive LCT digital asset after the event!</p>
-    <iframe src="https://identity.ic0.app/" width="100%" height="600px"></iframe>
+    <p>Create an Internet Identity to receive an exclusive LCT digital asset after the event!</p>
+    <button id="iiButton">Create Internet Identity</button>
     <div id="status"></div>
     <script src="script.js"></script>
 </body>
