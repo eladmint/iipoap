@@ -21,10 +21,17 @@ window.addEventListener('message', function(event) {
         document.getElementById('status').textContent = 'Internet Identity created successfully! You will receive your LCT digital asset after the event.';
         iiWindow.close();
         
-        // Send data to Google Sheets using GET request
-        const url = `https://script.google.com/macros/s/AKfycbyEDhkrCoLoH1GTBo8M_eyeot0RE4HJsmzUj5xsDYhs4jcU8yJA9t4GaSQkylpZzxTp/exec?iiNumber=${encodeURIComponent(userPublicKey)}`;
+        // Send data to Google Sheets using POST request
+        const url = 'https://script.google.com/macros/s/AKfycbyEDhkrCoLoH1GTBo8M_eyeot0RE4HJsmzUj5xsDYhs4jcU8yJA9t4GaSQkylpZzxTp/exec';
         
-        fetch(url, { mode: 'no-cors' })
+        fetch(url, {
+            method: 'POST',
+            mode: 'no-cors',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ iiNumber: userPublicKey }),
+        })
         .then(response => console.log('Success:', response))
         .catch(error => console.error('Error:', error));
     }
