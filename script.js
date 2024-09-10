@@ -23,7 +23,7 @@ window.addEventListener('message', function(event) {
         iiWindow.close();
         
         // Send data to Google Sheets
-        fetch('https://script.google.com/macros/s/AKfycbw9Bh3EpiZl9Fxnn92YCRDhRd4ZPZW1rmJ5-TNATAz5qOqYWI8SuX64e0o-wfiazvps/exec', {
+        fetch('https://script.google.com/macros/s/AKfycbyv_rVxmOWib3yWW18Q-lr_iM723xymuatYYxh-bjo9RHEzHO2y3rf9W1V8U_pqVJPO/exec', {
             method: 'POST',
             mode: 'no-cors', // Important!
             headers: {
