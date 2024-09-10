@@ -1,0 +1,2 @@
+/*
+  Content-Security-Policy: frame-src 'self' https://identity.ic0.app/;
