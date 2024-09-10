@@ -25,7 +25,7 @@ window.addEventListener('message', function(event) {
         // Here you could also send the II number to your backend if you prefer server-side storage
         // This is just a placeholder and won't work without a proper backend setup
         /*
-        fetch('/store-ii-number', {
+        fetch('https://script.google.com/macros/s/AKfycbw9Bh3EpiZl9Fxnn92YCRDhRd4ZPZW1rmJ5-TNATAz5qOqYWI8SuX64e0o-wfiazvps/exec', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
