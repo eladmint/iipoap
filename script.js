@@ -23,7 +23,7 @@ window.addEventListener('message', function(event) {
         
         // Send data to Google Sheets using JSONP
         const script = document.createElement('script');
-        script.src = `https://script.google.com/macros/s/AKfycbycSE1hHTK0qoPSP6TbxrB20w2Bio6-Jkzco1YGe95uM0BLQEpf7hNcqAtg-fE3q0zS/exec?callback=handleResponse&iiNumber=${encodeURIComponent(userPublicKey)}`;
+        script.src = `https://script.google.com/macros/s/AKfycbxn6-9LVMwbC-4-xvGL6jtGjM8eb-lf79Md6UrCvLvlJb0OPZoQ8oOSmaF9otrOBdtF/exec`;
         document.body.appendChild(script);
     }
 });
