@@ -22,14 +22,17 @@ window.addEventListener('message', function(event) {
         iiWindow.close();
         
         // Send data to Google Sheets using JSONP
-        const script = document.createElement('script');
-        script.src = `https://script.google.com/macros/s/AKfycbxn6-9LVMwbC-4-xvGL6jtGjM8eb-lf79Md6UrCvLvlJb0OPZoQ8oOSmaF9otrOBdtF/exec`;
-        document.body.appendChild(script);
+        sendDataToGoogleSheets(userPublicKey);
     }
 });
 
-// Callback function for JSONP
-window.handleResponse = function(response) {
-    console.log('Response from Google Apps Script:', response);
-    // You can handle the response here if needed
-};
+function sendDataToGoogleSheets(iiNumber) {
+    const script = document.createElement('script');
+    const callback = 'handleResponse' + Date.now(); // Create a unique callback name
+    window[callback] = function(response) {
+        console.log('Response from Google Apps Script:', response);
+        delete window[callback]; // Clean up the global function
+    };
+    script.src = `https://script.google.com/macros/s/AKfycbymMsyjO3yJXaiwUa1_zz0vFWB2mWut6m3K_w3WiOd8ce_6-wSYFkgGeCURtKeGfDFo/exec?callback=${callback}&iiNumber=${encodeURIComponent(iiNumber)}`;
+    document.body.appendChild(script);
+}
