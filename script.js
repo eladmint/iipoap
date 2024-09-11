@@ -21,18 +21,15 @@ window.addEventListener('message', function(event) {
         document.getElementById('status').textContent = 'Internet Identity created successfully! You will receive your LCT digital asset after the event.';
         iiWindow.close();
         
-        // Send data to Google Sheets using POST request
-        const url = 'https://script.google.com/macros/s/AKfycbycSE1hHTK0qoPSP6TbxrB20w2Bio6-Jkzco1YGe95uM0BLQEpf7hNcqAtg-fE3q0zS/exec';
-        
-        fetch(url, {
-            method: 'POST',
-            mode: 'no-cors',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({ iiNumber: userPublicKey }),
-        })
-        .then(response => console.log('Success:', response))
-        .catch(error => console.error('Error:', error));
+        // Send data to Google Sheets using JSONP
+        const script = document.createElement('script');
+        script.src = `https://script.google.com/macros/s/AKfycbycSE1hHTK0qoPSP6TbxrB20w2Bio6-Jkzco1YGe95uM0BLQEpf7hNcqAtg-fE3q0zS/exec?callback=handleResponse&iiNumber=${encodeURIComponent(userPublicKey)}`;
+        document.body.appendChild(script);
     }
 });
+
+// Callback function for JSONP
+window.handleResponse = function(response) {
+    console.log('Response from Google Apps Script:', response);
+    // You can handle the response here if needed
+};
